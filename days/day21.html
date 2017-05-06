@@ -72,11 +72,12 @@
       function onMouseClick(val){
         x += val;
         socket.emit('button clicked', userId, x);
+        console.log(x);  
       };
 
       socket.on('button clicked', function(_userId, _x){
         window[_userId].x = _x;
-        console.log(window[_userId].x);        
+              
       });
       
       function onTickHandler(evt) {   
