@@ -38,6 +38,7 @@
 
       var userId;
       var y;
+      var x;
 
        socket.on('user connected', function(_userId, _y) { 
           userId = _userId;
@@ -69,11 +70,12 @@
 
        
       function onMouseClick(val){
-        socket.emit('button clicked', val)
+        x += val;
+        socket.emit('button clicked', userId, x);
       };
 
-      socket.on('button clicked', function(UserId, value){
-        window[UserId].x += value;        
+      socket.on('button clicked', function(_userId, _x){
+        window[UserId].x = _x;        
       });
       
       function onTickHandler(evt) {   

@@ -33,8 +33,8 @@ io.on('connection', function(client) {
   });
 
 
-  client.on('button clicked', function(value){
-    client.emit('button clicked', client.id, value);
+  client.on('button clicked', function(_userId, _x){
+    io.emit('button clicked', _userId, _x);
   });
 
 
