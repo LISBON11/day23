@@ -11,6 +11,7 @@
   </head> 
   <body>
     <canvas id="canvas"></canvas><br>
+    <div id='textcont'></div>
     <button onClick="onMouseClick(-20)"> Левая </button>
     <button onClick="onMouseClick(20)"> Правая </button>
 
@@ -34,24 +35,6 @@
         animations: {stand: 3}
       });
 
-      // socket.on('user connected', function(UserId, y){ 
-      //     var name = 'U' + UserId.toString().substr(1, 4);
-
-      //     window[UserId] = new createjs.Sprite(spriteSheet, 1);
-      //     stage.addChild(window[UserId]);
-
-      //     console.log(UserId);
-      //     console.log(window[UserId]);
-
-      //     window[UserId].x = 0;
-      //     window[UserId].y = y;
-
-      //     ctx.fillText(name, window[UserId].x+40, window[UserId].y-12);
-
-      //     createjs.Ticker.addEventListener("tick", onTickHandler);
-
-          
-      // });
 
       var userId;
       var y;
@@ -78,7 +61,13 @@
 
           createjs.Ticker.addEventListener("tick", onTickHandler);
 
-          // socket.emit('haloy', _userId, _y);
+          var textcont = document.getElementById('textcont');
+          var row = document.createElement('p');
+          row.innerText = _userId;
+
+          textcont.appendChild(row);
+
+          
       });
 
        
