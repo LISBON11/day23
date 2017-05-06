@@ -32,26 +32,26 @@
       socket.on('user connected', function(UserId){ 
           var name = 'U' + UserId.toString().substr(1, 4);
 
-          window["UserId"] = new createjs.Sprite(spriteSheet, 1);
-          stage.addChild(window["UserId"]);
+          window[UserId] = new createjs.Sprite(spriteSheet, 1);
+          stage.addChild(window[UserId]);
+
           console.log(UserId);
-          console.log(window["UserId"]);
+          console.log(window[UserId]);
 
           if (vertical < canvas.height-140){
-            window["UserId"].x = horizontal;
-            window["UserId"].y = vertical;
-          }
-          else {
+            window[UserId].x = horizontal;
+            window[UserId].y = vertical;
+          } else {
             vertical = 20;
             horizontal += 120;
           }
 
           if (horizontal >= canvas.width-139){
-            window["UserId"].x = horizontal;
-            window["UserId"].y = vertical;
+            window[UserId].x = horizontal;
+            window[UserId].y = vertical;
           }
 
-          ctx.fillText(name, window["UserId"].x+40, window["UserId"].y-12);
+          ctx.fillText(name, window[UserId].x+40, window[UserId].y-12);
           vertical += 120;
           createjs.Ticker.addEventListener("tick", onTickHandler);
       });
