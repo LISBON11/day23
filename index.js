@@ -19,6 +19,9 @@ app.get('/day21', function(req, res){
   res.sendFile(__dirname + '/days/day21.html');
 });
 
+
+var y = 0;
+
 io.on('connection', function(client) {
   client.emit('user connected', client.id);
   client.on('button clicked', function(value){
