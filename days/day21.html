@@ -58,7 +58,6 @@
           window[_userId].y = _y;
 
           ctx.fillText(name, window[_userId].x+40, window[_userId].y-12);
-
           createjs.Ticker.addEventListener("tick", onTickHandler);
 
           var textcont = document.getElementById('textcont');
@@ -66,8 +65,6 @@
           row.innerText = _userId;
 
           textcont.appendChild(row);
-
-          
       });
 
        

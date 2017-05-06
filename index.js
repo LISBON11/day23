@@ -29,7 +29,7 @@ io.on('connection', function(client) {
 
 
   client.on('paint', function(_userId, _y){
-    client.emit('paint_1', _userId, _y);
+    io.emit('paint_1', _userId, _y);
   });
 
 
