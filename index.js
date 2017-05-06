@@ -23,11 +23,13 @@ app.get('/day21', function(req, res){
 var y = 0;
 
 io.on('connection', function(client) {
-  y += 100;
+  
   client.emit('user connected', client.id, y);
   client.on('button clicked', function(value){
     client.emit('button clicked', client.id, value);
   });
+
+  y += 50;
 });
 
 http.listen(port, function(){
