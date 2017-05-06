@@ -33,24 +33,24 @@
         animations: {stand: 3}
       });
 
-      socket.on('user connected', function(UserId, y){ 
-          var name = 'U' + UserId.toString().substr(1, 4);
+      // socket.on('user connected', function(UserId, y){ 
+      //     var name = 'U' + UserId.toString().substr(1, 4);
 
-          window[UserId] = new createjs.Sprite(spriteSheet, 1);
-          stage.addChild(window[UserId]);
+      //     window[UserId] = new createjs.Sprite(spriteSheet, 1);
+      //     stage.addChild(window[UserId]);
 
-          console.log(UserId);
-          console.log(window[UserId]);
+      //     console.log(UserId);
+      //     console.log(window[UserId]);
 
-          window[UserId].x = 0;
-          window[UserId].y = y;
+      //     window[UserId].x = 0;
+      //     window[UserId].y = y;
 
-          ctx.fillText(name, window[UserId].x+40, window[UserId].y-12);
+      //     ctx.fillText(name, window[UserId].x+40, window[UserId].y-12);
 
-          createjs.Ticker.addEventListener("tick", onTickHandler);
+      //     createjs.Ticker.addEventListener("tick", onTickHandler);
 
-          socket.emit('haloy', UserId, y);
-      });
+          
+      // });
 
       socket.on('haloy', function(UserId, y) {
         
@@ -66,6 +66,8 @@
           ctx.fillText(name, window[UserId].x+40, window[UserId].y-12);
 
           createjs.Ticker.addEventListener("tick", onTickHandler);
+
+          socket.emit('haloy', UserId, y);
       });
 
        
