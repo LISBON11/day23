@@ -24,11 +24,11 @@ var y = 0;
 
 io.on('connection', function(client) {
   
-  // client.emit('user connected', client.id, y);
+  client.emit('user connected', client.id, y);
 
 
-  client.on('haloy', function(userId, yVal){
-    client.emit('haloy', client.id, yVal);
+  client.on('paint', function(_userId, _y){
+    client.emit('paint_1', _userId, _y);
   });
 
 

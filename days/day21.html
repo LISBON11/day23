@@ -16,12 +16,13 @@
 
     <script >
       var socket = io();
-          stage = new createjs.Stage("canvas");
-          canvas = document.querySelector('canvas');
-          ctx = canvas.getContext('2d');
-          ctx.font = "bold 10px sans-serif";
-          canvas.width = window.innerWidth-50;
-          canvas.height = window.innerHeight-50;
+
+      stage = new createjs.Stage("canvas");
+      canvas = document.querySelector('canvas');
+      ctx = canvas.getContext('2d');
+      ctx.font = "bold 10px sans-serif";
+      canvas.width = window.innerWidth-50;
+      canvas.height = window.innerHeight-50;
 
       var vertical = 20;
       var horizontal = 20;
@@ -52,22 +53,32 @@
           
       // });
 
-      socket.on('haloy', function(UserId, y) {
+      var userId;
+      var y;
+
+       socket.on('user connected', function(_userId, _y) { 
+          userId = _userId;
+          y = _y;
+
+          socket.emit('paint', userId, y);
+       })
+
+      socket.on('paint_1', function(_userId, _y) {
         
-          window[UserId] = new createjs.Sprite(spriteSheet, 1);
-          stage.addChild(window[UserId]);
+          window[_userId] = new createjs.Sprite(spriteSheet, 1);
+          stage.addChild(window[_userId]);
 
-          console.log(UserId);
-          console.log(window[UserId]);
+          console.log(_userId);
+          console.log(window[_userId]);
 
-          window[UserId].x = 0;
-          window[UserId].y = y;
+          window[_userId].x = 0;
+          window[_userId].y = _y;
 
-          ctx.fillText(name, window[UserId].x+40, window[UserId].y-12);
+          ctx.fillText(name, window[_userId].x+40, window[_userId].y-12);
 
           createjs.Ticker.addEventListener("tick", onTickHandler);
 
-          socket.emit('haloy', UserId, y);
+          // socket.emit('haloy', _userId, _y);
       });
 
        
