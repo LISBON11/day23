@@ -25,6 +25,12 @@ var y = 0;
 io.on('connection', function(client) {
   
   client.emit('user connected', client.id, y);
+
+  client.on('haloy', function(userId, yVal){
+    client.emit('haloy', client.id, yVal);
+  });
+
+
   client.on('button clicked', function(value){
     client.emit('button clicked', client.id, value);
   });

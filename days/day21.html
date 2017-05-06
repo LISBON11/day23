@@ -46,9 +46,28 @@
           window[UserId].y = y;
 
           ctx.fillText(name, window[UserId].x+40, window[UserId].y-12);
-          
+
+          createjs.Ticker.addEventListener("tick", onTickHandler);
+
+          socket.emit('haloy', UserId, yVal);
+      });
+
+      socket.on('haloy', function(UserId, y) {
+        
+          window[UserId] = new createjs.Sprite(spriteSheet, 1);
+          stage.addChild(window[UserId]);
+
+          console.log(UserId);
+          console.log(window[UserId]);
+
+          window[UserId].x = 0;
+          window[UserId].y = y;
+
+          ctx.fillText(name, window[UserId].x+40, window[UserId].y-12);
+
           createjs.Ticker.addEventListener("tick", onTickHandler);
       });
+
        
       function onMouseClick(val){
         socket.emit('button clicked', val)
