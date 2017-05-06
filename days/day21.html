@@ -75,8 +75,8 @@
       };
 
       socket.on('button clicked', function(_userId, _x){
-        window[UserId].x = _x;
-        console.log(window[UserId].x);        
+        window[_userId].x = _x;
+        console.log(window[_userId].x);        
       });
       
       function onTickHandler(evt) {   
