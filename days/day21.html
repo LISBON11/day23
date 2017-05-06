@@ -49,7 +49,7 @@
 
           createjs.Ticker.addEventListener("tick", onTickHandler);
 
-          socket.emit('haloy', UserId, yVal);
+          socket.emit('haloy', UserId, y);
       });
 
       socket.on('haloy', function(UserId, y) {
