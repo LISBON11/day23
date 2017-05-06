@@ -25,6 +25,7 @@ var y = 0;
 io.on('connection', function(client) {
   
   client.emit('user connected', client.id, y);
+  y+=50;
 
 
   client.on('paint', function(_userId, _y){
