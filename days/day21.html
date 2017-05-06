@@ -28,10 +28,14 @@
       images: ["http://savepic.ru/13767000.png"],
       frames: {width: 120, height: 120, count: 24},
       animations: {stand: 3}});
+
       socket.on('user connected', function(UserId){ 
           var name = 'U' + UserId.toString().substr(1, 4);
+
           window["UserId"] = new createjs.Sprite(spriteSheet, 1);
           stage.addChild(window["UserId"]);
+          console.log(UserId);
+
           if (vertical < canvas.height-140){
             window["UserId"].x = horizontal;
             window["UserId"].y = vertical;
@@ -40,10 +44,12 @@
             vertical = 20;
             horizontal += 120;
           }
+
           if (horizontal >= canvas.width-139){
             window["UserId"].x = horizontal;
             window["UserId"].y = vertical;
           }
+
           ctx.fillText(name, window["UserId"].x+40, window["UserId"].y-12);
           vertical += 120;
           createjs.Ticker.addEventListener("tick", onTickHandler);
