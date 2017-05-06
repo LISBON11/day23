@@ -33,7 +33,7 @@
         animations: {stand: 3}
       });
 
-      socket.on('user connected', function(UserId){ 
+      socket.on('user connected', function(UserId, y){ 
           var name = 'U' + UserId.toString().substr(1, 4);
 
           window[UserId] = new createjs.Sprite(spriteSheet, 1);
@@ -43,7 +43,7 @@
           console.log(window[UserId]);
 
           window[UserId].x = 0;
-          window[UserId].y = 100;
+          window[UserId].y = y;
 
           ctx.fillText(name, window[UserId].x+40, window[UserId].y-12);
           vertical += 120;
